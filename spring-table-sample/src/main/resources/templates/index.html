@@ -1,0 +1,87 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>テーブル構造のサンプル</title>
+<style>
+div {
+  display: inline-block;
+}
+table {
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+table th, table td {
+  border: 1px solid #000000;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+  <h1>テーブル構造のサンプル</h1>
+  <div id="th">
+    <table th:each="table : ${tables}">
+      <caption>Thymeleaf</caption>
+      <tr>
+        <th>&nbsp;</th>
+        <th th:each="column : ${table.columnKeyList()}" th:text="${column.value}">
+        </th>
+      </tr>
+      <tr th:each="row : ${table.rowKeyList()}">
+        <th th:text="${row.value}"></th>
+        <td th:each="col : ${table.columnKeyList()}" th:text="${table.get(row, col)} ? ${table.get(row, col).name} : ''"></td>
+      </tr>
+    </table>
+  </div>
+  <div id="js">
+  </div>
+  <script>
+  var headers = new Headers({
+      "Accept": "application/json"
+  });
+  var init = {
+      headers: headers
+  };
+  fetch('/', init).then(res => {
+      return res.json();
+  }).then(json => {
+      var div = document.querySelector('#js');
+      json.forEach(tableData => {
+          var table = document.createElement('table');
+          var caption = document.createElement('caption');
+          caption.textContent = 'JavaScript';
+          table.appendChild(caption);
+
+          for (var rowKey in tableData) {
+              var rowData = tableData[rowKey];
+              var row = document.createElement('tr');
+              var col = document.createElement('th');
+              col.textContent = rowKey;
+              row.appendChild(col);
+              for (var colKey in rowData) {
+                  if (table.querySelector('tr') == null) {
+                      // header row
+                      var r = document.createElement('tr');
+                      var c = document.createElement('th');
+                      c.textContent = ' ';
+                      r.appendChild(c);
+                      for (var k in rowData) {
+                          c = document.createElement('th');
+                          c.textContent = k;
+                          r.appendChild(c);
+                      }
+                      table.appendChild(r);
+                  }
+                  var cell = document.createElement('td');
+                  cell.textContent = rowData[colKey] == null ? ' ' : rowData[colKey].name;
+                  row.appendChild(cell);
+              }
+              table.appendChild(row);
+          }
+          div.appendChild(table);
+      });
+  });
+
+  </script>
+</body>
+</html>
