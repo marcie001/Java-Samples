@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>入力チェックサンプル</title>
+<style type="text/css">
+input.error {
+  border-color: red;
+}
+p.error {
+  color: red;
+}
+</style>
+</head>
+<body>
+<form action="/" method="POST" th:object="${form}">
+<div th:if="${#fields.hasGlobalErrors()}">
+  <p class="error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+</div>
+<div>
+名前：<input type="text" th:field="*{name}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">error message</p>
+</div>
+<div>
+身長：<input type="text" th:field="*{height}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('height')}" th:errors="*{height}" class="error">error message</p>
+</div>
+<div>
+ペット：
+<label><input type="radio" th:field="*{pet}" value="DOG" th:errorclass="error"/> DOG</label>
+<label><input type="radio" th:field="*{pet}" value="CAT" th:errorclass="error"/> CAT</label>
+<label><input type="radio" th:field="*{pet}" value="OTHER" th:errorclass="error"/> OTHER
+<input type="text" th:field="*{petOther}" th:classappend="(${#fields.hasErrors('petOther') || #fields.hasErrors('petOtherNotNull') || #fields.hasErrors('petOtherNull')}) ? error : '' " />
+</label>
+<p th:if="${#fields.hasErrors('pet')}" th:errors="*{pet}" class="error">error message</p>
+<p th:if="${#fields.hasErrors('petOther')}" th:errors="*{petOther}" class="error">error message</p>
+<p th:if="${#fields.hasErrors('petOtherNotNull')}" th:errors="*{petOtherNotNull}" class="error">error message</p>
+<p th:if="${#fields.hasErrors('petOtherNull')}" th:errors="*{petOtherNull}" class="error">error message</p>
+</div>
+<div>
+出身地：<input type="text" placeholder="東京都" th:field="*{hometown}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('hometown')}" th:errors="*{hometown}" class="error">error message</p>
+</div>
+<div>
+住所：<input type="text" placeholder="神奈川県" th:field="*{address}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="error">error message</p>
+</div>
+<div>
+<div>
+パスワード：<input type="password" th:field="*{password}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error">error message</p>
+</div>
+<div>
+パスワード（確認用）：<input type="password" th:field="*{passwordConfirm}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}" class="error">error message</p>
+</div>
+<div>
+パスフレーズ：<input type="password" th:field="*{passphrase}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('passphrase')}" th:errors="*{passphrase}" class="error">error message</p>
+</div>
+<div>
+パスフレーズ（確認用）：<input type="password" th:field="*{passphraseConfirm}" th:errorclass="error"/>
+<p th:if="${#fields.hasErrors('passphraseConfirm')}" th:errors="*{passphraseConfirm}" class="error">error message</p>
+</div>
+<button type="submit">送信</button>
+</div>
+<div th:text="#{messages.sample('サンプル')}"></div>
+</form>
+</body>
+</html>

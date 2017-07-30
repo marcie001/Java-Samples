@@ -1,0 +1,52 @@
+create table hometowns (
+    code char(2) not null primary key,
+    name varchar(4) not null
+);
+
+insert into hometowns (code, name) values ('01', '北海道');
+insert into hometowns (code, name) values ('02', '青森県');
+insert into hometowns (code, name) values ('03', '岩手県');
+insert into hometowns (code, name) values ('04', '宮城県');
+insert into hometowns (code, name) values ('05', '秋田県');
+insert into hometowns (code, name) values ('06', '山形県');
+insert into hometowns (code, name) values ('07', '福島県');
+insert into hometowns (code, name) values ('08', '茨城県');
+insert into hometowns (code, name) values ('09', '栃木県');
+insert into hometowns (code, name) values ('10', '群馬県');
+insert into hometowns (code, name) values ('11', '埼玉県');
+insert into hometowns (code, name) values ('12', '千葉県');
+insert into hometowns (code, name) values ('13', '東京都');
+insert into hometowns (code, name) values ('14', '神奈川県');
+insert into hometowns (code, name) values ('15', '新潟県');
+insert into hometowns (code, name) values ('16', '富山県');
+insert into hometowns (code, name) values ('17', '石川県');
+insert into hometowns (code, name) values ('18', '福井県');
+insert into hometowns (code, name) values ('19', '山梨県');
+insert into hometowns (code, name) values ('20', '長野県');
+insert into hometowns (code, name) values ('21', '岐阜県');
+insert into hometowns (code, name) values ('22', '静岡県');
+insert into hometowns (code, name) values ('23', '愛知県');
+insert into hometowns (code, name) values ('24', '三重県');
+insert into hometowns (code, name) values ('25', '滋賀県');
+insert into hometowns (code, name) values ('26', '京都府');
+insert into hometowns (code, name) values ('27', '大阪府');
+insert into hometowns (code, name) values ('28', '兵庫県');
+insert into hometowns (code, name) values ('29', '奈良県');
+insert into hometowns (code, name) values ('30', '和歌山県');
+insert into hometowns (code, name) values ('31', '鳥取県');
+insert into hometowns (code, name) values ('32', '島根県');
+insert into hometowns (code, name) values ('33', '岡山県');
+insert into hometowns (code, name) values ('34', '広島県');
+insert into hometowns (code, name) values ('35', '山口県');
+insert into hometowns (code, name) values ('36', '徳島県');
+insert into hometowns (code, name) values ('37', '香川県');
+insert into hometowns (code, name) values ('38', '愛媛県');
+insert into hometowns (code, name) values ('39', '高知県');
+insert into hometowns (code, name) values ('40', '福岡県');
+insert into hometowns (code, name) values ('41', '佐賀県');
+insert into hometowns (code, name) values ('42', '長崎県');
+insert into hometowns (code, name) values ('43', '熊本県');
+insert into hometowns (code, name) values ('44', '大分県');
+insert into hometowns (code, name) values ('45', '宮崎県');
+insert into hometowns (code, name) values ('46', '鹿児島県');
+insert into hometowns (code, name) values ('47', '沖縄県');
