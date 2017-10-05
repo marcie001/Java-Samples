@@ -39,8 +39,10 @@ public class IndexController {
 		if (bindingResult.hasErrors()) {
 			// BindingResult#addError(ObjectError) でグローバルなエラー。
 			// ObjectError のコンストラクタの第1引数は自由に決められる名前。第2引数にメッセージ。
-			bindingResult
-					.addError(new ObjectError("global", messageSource.getMessage("errors.errorsExist", null, locale)));
+			bindingResult.addError(new ObjectError("global", new String[] { "errors.errorsExist" },
+					new String[] { messageSource.getMessage("inputError", null, locale),
+							messageSource.getMessage("validValue", null, locale) },
+					""));
 
 			bindingResult.getGlobalErrors().stream().forEach(e -> logger.info(e.getObjectName()));
 
