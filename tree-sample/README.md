@@ -8,5 +8,8 @@
 読み込んだファイルと同じディレクトリに `読み込んだファイル名 + ".json"` という名前でファイルを作成するので注意してください。
 作成したファイルの中身は生成した木構造オブジェクトを JSON にシリアライズしたものです。
 
-    $ ./mvnw exec:java -Dexec.args=/path/to/zenkoku.csv
+```
+$ ./mvnw compile
+$ ./mvnw exec:java -Dexec.args=/path/to/zenkoku.csv
+```
 
